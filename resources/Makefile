@@ -8,7 +8,7 @@ all up:
 	VBoxManage setproperty machinefolder $(HOME)/goinfre/vagrant/vms
 	$(VENV) vagrant up
 
-ssh: up
+ssh:
 	$(VENV) vagrant ssh
 
 fclean clean:
