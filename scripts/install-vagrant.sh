@@ -17,5 +17,5 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashi
 apt-get update
 apt-get install vagrant -y
 
-# set env var so the VMs in 2nd dream use goinfre in reality
-echo 'VAGRANT_DOTFILE_PATH=/home/vagrant/.vagrant' >> /etc/environment
+# set env var so box cache is stored in vagrant home
+echo 'VAGRANT_HOME=/home/vagrant/.vagrant.d' >> /etc/environment
