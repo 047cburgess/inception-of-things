@@ -11,6 +11,7 @@ Vagrant.configure("2") do |config|
 
   #TODO set provider virtualbox, use minimumus from subject, and set virtualization 
   #TODO install k3s
+  config.vm.provision "shell", path: "scripts/install-k3s.sh"
 end
 
 #TODO 2nd vm
