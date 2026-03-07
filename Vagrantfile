@@ -8,9 +8,8 @@ Vagrant.configure("2") do |config|
   config.vm.provider "virtualbox" do |v|
     v.memory = 4096
     v.cpus = 4
+    v.customize ["modifyvm", :id, "--nested-hw-virt", "on"]
   end
-
-  config.vm.provision "shell", inline: "export VAGRANT_DOTFILE_PATH=/home/vagrant/.vagrant"
 
   config.vm.provision "shell", inline: "apt-get update"
   #config.vm.provision "shell", path: "scripts/install-docker.sh"
