@@ -19,3 +19,6 @@ apt-get install vagrant -y
 
 # set env var so box cache is stored in vagrant home
 echo 'VAGRANT_HOME=/home/vagrant/.vagrant.d' >> /etc/environment
+
+# make sure.vagrant files not created in current folder as we don't have permissions
+echo 'VAGRANT_DOTFILE_PATH=/home/vagrant/.vagrant' >> /etc/environment

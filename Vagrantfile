@@ -7,9 +7,6 @@ VAGRANT_DISABLE_VBOXSYMLINKCREATE=1
 # Tell scripts they don't have a tty
 ENV["DEBIAN_FRONTEND"] = "noninteractive"
 
-# Do not put .vagrant in current folder when running vagrant, use 
-ENV["VAGRANT_DOTFILE_PATH"] = "/home/vagrant/.vagrant"
-
 Vagrant.configure("2") do |config|
   config.vm.box = "generic/debian12"
   config.vm.provider "virtualbox" do |v|
