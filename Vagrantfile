@@ -1,6 +1,8 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+VAGRANT_DISABLE_VBOXSYMLINKCREATE=1
+
 Vagrant.configure("2") do |config|
   config.vm.box = "generic/debian12"
   config.vm.provider "virtualbox" do |v|
@@ -12,4 +14,6 @@ Vagrant.configure("2") do |config|
   #config.vm.provision "shell", path: "scripts/install-docker.sh"
   #config.vm.provision "shell", path: "scripts/guest-additions.sh"
   config.vm.provision "shell", path: "scripts/install-vagrant.sh"
+
+  config.vm.synced_folder "../", "/home/vagrant/", mount_options: ["ro"]
 end
