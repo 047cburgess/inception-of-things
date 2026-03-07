@@ -1,0 +1,15 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "generic/debian12"
+
+  #TODO set provider virtualbox, use minimumus from subject, and set virtualization 
+
+  config.vm.provision "shell", inline: "apt-get update"
+  config.vm.provision "shell", path: "scripts/install-k3s-server.sh"
+
+  config.vm.synced_folder "/home/vagrant/.vagrant.d", "/home/vagrant/.vagrant.d"
+end
+
+#TODO 2nd vm

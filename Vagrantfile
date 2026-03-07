@@ -15,5 +15,5 @@ Vagrant.configure("2") do |config|
   #config.vm.provision "shell", path: "scripts/guest-additions.sh"
   config.vm.provision "shell", path: "scripts/install-vagrant.sh"
 
-  config.vm.synced_folder "../", "/home/vagrant/", mount_options: ["ro"]
+  config.vm.synced_folder "../", "/home/vagrant/iot", mount_options: ["ro"]
 end
