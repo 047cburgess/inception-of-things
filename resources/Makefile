@@ -11,10 +11,13 @@ all up:
 ssh:
 	$(VENV) vagrant ssh
 
-fclean clean:
+destroy:
 	$(VENV) vagrant destroy -f
+
+fclean clean: destroy
+	rm -rf $(VAGRANT_HOME)
 	rm -rf $(VAGRANT_DOTFILE_PATH)
 
-re: fclean all
+re: destroy up
 
-.PHONY: all up dev re fclean clean
+.PHONY: all up ssh fclean clean
