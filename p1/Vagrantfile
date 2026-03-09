@@ -17,6 +17,7 @@ Vagrant.configure("2") do |config|
       v.cpus = 1
     end
     server.vm.provision "shell", path: "scripts/install-k3s-server.sh"
+    server.vm.synced_folder "/home/vagrant/heya", "/hellokittytoken", create: true
   end
 
   #TODO set provider virtualbox, use minimumus from subject, and set virtualization 
@@ -32,8 +33,8 @@ Vagrant.configure("2") do |config|
       v.memory = 1024
       v.cpus = 1
     end
-    worker.vm.provision "shell", path: "scripts/install-k3s-worker.sh",
-      env: { "K3S_TOKEN" => ENV["K3S_TOKEN"] || "my-token" }
+    worker.vm.synced_folder "/home/vagrant/heya", "/hellokittytoken"
+    worker.vm.provision "shell", path: "scripts/install-k3s-worker.sh"
   end
 
 
