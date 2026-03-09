@@ -17,3 +17,12 @@ sudo chown $(id -u):$(id -g) ~/.kube/config
 
 # Verify the configuration works
 kubectl get nodes
+
+# Make sure the agent-token exists before ending
+echo Waiting for agent-token . . .
+while [ ! -f "/var/lib/rancher/k3s/server/agent-token" ]
+do
+  sleep 0.2
+done
+echo agent-token exists!
+

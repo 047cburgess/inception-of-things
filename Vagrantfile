@@ -9,13 +9,13 @@ ENV["DEBIAN_FRONTEND"] = "noninteractive"
 
 Vagrant.configure("2") do |config|
   config.vm.box = "generic/debian12"
-  config.vm.hostname = "expozoo"
+  config.vm.hostname = "whatever"
 
   config.vm.provider "virtualbox" do |v|
     v.memory = 1024 * 10
     v.cpus = 4
     # Activate nested virtualization to run VMs inside the VM
-    v.customize ["modifyvm", :id, "--nested-hw-virt", "on"]
+    v.customize ["modifyvm", :id, "--nested-hw-virt", "on", "--name", "whatever"]
   end
 
   # Install Vagrant and Virtualbox
@@ -26,5 +26,9 @@ Vagrant.configure("2") do |config|
 
   # Mount Vagrant cache folder so that vagrant does not re-download boxes every time
   config.vm.synced_folder ENV['VAGRANT_HOME'], "/home/vagrant/.vagrant.d"
+
+  # Prepare shared folder
+  # config.vm.provision "shell", inline: "mkdir /home/vagrant/shared"
+  # config.vm.provision "shell", inline: "chown vagrant /home/vagrant/shared"
 
 end
