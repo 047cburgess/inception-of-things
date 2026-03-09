@@ -26,4 +26,5 @@ Vagrant.configure("2") do |config|
 
   # Mount Vagrant cache folder so that vagrant does not re-download boxes every time
   config.vm.synced_folder ENV['VAGRANT_HOME'], "/home/vagrant/.vagrant.d"
+
 end
