@@ -9,6 +9,8 @@ ENV["DEBIAN_FRONTEND"] = "noninteractive"
 
 Vagrant.configure("2") do |config|
   config.vm.box = "generic/debian12"
+  config.vm.hostname = "expozoo"
+
   config.vm.provider "virtualbox" do |v|
     v.memory = 1024 * 10
     v.cpus = 4
