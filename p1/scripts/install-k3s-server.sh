@@ -1,4 +1,6 @@
 #!/bin/bash
+set -eup
+
 # Download and run the official K3s install script
 # This installs K3s as a systemd service and starts it automatically
 curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="--write-kubeconfig-mode 644 --flannel-iface=eth1" sh -
@@ -18,11 +20,4 @@ sudo chown $(id -u):$(id -g) ~/.kube/config
 # Verify the configuration works
 kubectl get nodes
 
-# Make sure the agent-token exists before ending
-echo Waiting for agent-token . . .
-while [ ! -f "/var/lib/rancher/k3s/server/agent-token" ]
-do
-  sleep 0.2
-done
-echo agent-token exists!
-
+cp /var/lib/rancher/k3s/server/token /hellokittytoken/agent-token
