@@ -1,4 +1,6 @@
 #!/bin/bash
+set -eup
+
 # Download and run the official K3s install script
 # This installs K3s as a systemd service and starts it automatically
 curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="--write-kubeconfig-mode 644 --flannel-iface=eth1" sh -
