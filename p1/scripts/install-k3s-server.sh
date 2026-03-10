@@ -20,4 +20,4 @@ sudo chown $(id -u):$(id -g) ~/.kube/config
 # Verify the configuration works
 kubectl get nodes
 
-cp /var/lib/rancher/k3s/server/token /hellokittytoken/agent-token
+cp /var/lib/rancher/k3s/server/token /token/agent-token
