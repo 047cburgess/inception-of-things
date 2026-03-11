@@ -1,12 +1,15 @@
 VAGRANT_HOME         := $(HOME)/goinfre/vagrant/home
 VAGRANT_DOTFILE_PATH := $(HOME)/goinfre/vagrant/.vagrant
 
-VENV := VAGRANT_HOME=$(VAGRANT_HOME) VAGRANT_DOTFILE_PATH=$(VAGRANT_DOTFILE_PATH)
+VENV := \
+	VAGRANT_HOME=$(VAGRANT_HOME) \
+	VAGRANT_DOTFILE_PATH=$(VAGRANT_DOTFILE_PATH) \
+	VAGRANT_DISABLE_VBOXSYMLINKCREATE=1
 
 all up:
 	mkdir -p $(VAGRANT_HOME) $(VAGRANT_DOTFILE_PATH)
 	VBoxManage setproperty machinefolder $(HOME)/goinfre/vagrant/vms
-	$(VENV) vagrant up
+	$(VENV) vagrant up 
 
 ssh:
 	$(VENV) vagrant ssh

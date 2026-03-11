@@ -1,4 +1,6 @@
 #!/bin/bash
+set -eup
+export DEBIAN_FRONTEND=noninteractive
 
 # See if OS has unofficial packages (should error if not)
 #sudo apt remove $(dpkg --get-selections docker.io docker-compose docker-doc podman-docker containerd runc | cut -f1)

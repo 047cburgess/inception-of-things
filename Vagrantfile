@@ -1,34 +1,30 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-# Do not create symlinks inside shared folders
-VAGRANT_DISABLE_VBOXSYMLINKCREATE=1
-
-# Tell scripts they don't have a tty
-ENV["DEBIAN_FRONTEND"] = "noninteractive"
+ENV["VAGRANT_DISABLE_VBOXSYMLINKCREATE"] = "1"
 
 Vagrant.configure("2") do |config|
   config.vm.box = "generic/debian12"
-  config.vm.hostname = "whatever"
+  config.vm.hostname = "expozoo"
 
   config.vm.provider "virtualbox" do |v|
-    v.memory = 1024 * 10
+    v.name = "expozoo"
+    v.memory = 1024 * 8
     v.cpus = 4
     # Activate nested virtualization to run VMs inside the VM
-    v.customize ["modifyvm", :id, "--nested-hw-virt", "on", "--name", "whatever"]
+    v.customize ["modifyvm", :id, "--nested-hw-virt", "on"]
   end
 
   # Install Vagrant and Virtualbox
   config.vm.provision "shell", path: "scripts/install-vagrant.sh"
 
   # Mount project at ~/iot for convenience (read only)
-  config.vm.synced_folder "./", "/home/vagrant/iot", mount_options: ["ro"]
+  config.vm.synced_folder "./", "/home/vagrant/iot", mount_options: ["ro"], type: "rsync", rsync__exclude: ".git/"
 
   # Mount Vagrant cache folder so that vagrant does not re-download boxes every time
-  config.vm.synced_folder ENV['VAGRANT_HOME'], "/home/vagrant/.vagrant.d"
+  config.vm.synced_folder ENV['VAGRANT_HOME'], "/home/vagrant/.vagrant.d", type: "rsync"
 
-  # Prepare shared folder
-  # config.vm.provision "shell", inline: "mkdir /home/vagrant/shared"
-  # config.vm.provision "shell", inline: "chown vagrant /home/vagrant/shared"
+  # Have an unique prompt when connected to this vm
+  config.vm.provision "shell", path: "scripts/emoji-prompt.sh"
 
 end
