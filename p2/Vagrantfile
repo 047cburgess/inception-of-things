@@ -21,7 +21,7 @@ Vagrant.configure("2") do |config|
     server.vm.provision "shell", path: "scripts/install-k3s.sh"
 
     server.vm.synced_folder "/home/vagrant/iot/p2/confs", "/confs"
-    server.vm.provision "shell", inline: "kubectl apply -f /confs/ingress.yml"
+    server.vm.provision "shell", inline: "kubectl apply -f /confs/"
   end
 
 #   # SERVER WORKER

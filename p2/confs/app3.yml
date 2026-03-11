@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-three
+spec:
+  ports:
+    - port: 80
+      protocol: TCP
+  selector:
+    app: app-three
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-three
+spec:
+  selector:
+    matchLabels:
+      app: app-three
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: app-three
+    spec:
+      containers:
+      - name: nginx
+        image: nginxdemos/hello
+        ports:
+        - containerPort: 80
