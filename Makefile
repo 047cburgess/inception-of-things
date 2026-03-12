@@ -17,10 +17,16 @@ ssh:
 destroy:
 	$(VENV) vagrant destroy -f
 
+provision:
+	$(VENV) vagrant provision
+
+stop halt:
+	$(VENV) vagrant halt
+
 fclean clean: destroy
 	rm -rf $(VAGRANT_HOME)
 	rm -rf $(VAGRANT_DOTFILE_PATH)
 
 re: destroy up
 
-.PHONY: all up ssh fclean clean
+.PHONY: all up ssh fclean clean stop provision halt

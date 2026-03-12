@@ -24,7 +24,12 @@ Vagrant.configure("2") do |config|
   # Mount Vagrant cache folder so that vagrant does not re-download boxes every time
   config.vm.synced_folder ENV['VAGRANT_HOME'], "/home/vagrant/.vagrant.d", type: "rsync"
 
+  # Install Docker and k3d
+  config.vm.provision "shell", path: "scripts/install-docker.sh"
+  config.vm.provision "shell", path: "scripts/install-k3d.sh"
+
   # Have an unique prompt when connected to this vm
   config.vm.provision "shell", path: "scripts/emoji-prompt.sh"
+
 
 end
