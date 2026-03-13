@@ -3,23 +3,23 @@ kind: Namespace
 metadata:
   name: dev
 
---- 
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: dev-ingress
-  namespace: dev
-spec:
-  rules:
-  - http:
-      paths:
-      - pathType: Prefix
-        path: /
-        backend:
-          service:
-            name: will
-            port:
-              number: 8888
+  #--- 
+  #apiVersion: networking.k8s.io/v1
+  #kind: Ingress
+  #metadata:
+  #  name: dev-ingress
+  #  namespace: dev
+  #spec:
+  #  rules:
+  #  - http:
+  #      paths:
+  #      - pathType: Prefix
+  #        path: /
+  #        backend:
+  #          service:
+  #            name: will
+  #            port:
+  #              number: 8888
 
 ---
 apiVersion: v1
@@ -28,11 +28,13 @@ metadata:
   name: will
   namespace: dev
 spec:
+  type: NodePort
   ports:
-    - port: 8888
-      protocol: TCP
+    - port: 8888 # Port exposed within the cluster
+      targetPort: 8888 # Port on the pods
+      nodePort: 30000 # Port accessible externally on each node
   selector:
-    app: will
+    app: will # Select pods with this label
 
 ---
 apiVersion: apps/v1
