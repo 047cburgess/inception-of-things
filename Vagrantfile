@@ -6,6 +6,7 @@ ENV["VAGRANT_DISABLE_VBOXSYMLINKCREATE"] = "1"
 Vagrant.configure("2") do |config|
   config.vm.box = "generic/debian12"
   config.vm.hostname = "expozoo"
+  config.vm.network :forwarded_port, guest: 8888, host: 8888
 
   config.vm.provider "virtualbox" do |v|
     v.name = "expozoo"
