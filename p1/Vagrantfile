@@ -2,16 +2,28 @@
 # vi: set ft=ruby :
 #
 
+VM = {
+  'SERVER' => {
+    name: 'caburgesS',
+    ip: '192.168.56.110'
+  },
+  'WORKER' => {
+    name: 'caburgesSW',
+    ip: '192.168.56.111'
+  }
+}
+
+
 Vagrant.configure("2") do |config|
 
   config.vm.box = "generic/debian12"
 
   # SERVER
-  config.vm.define "caburgesS" do |server|
-    server.vm.hostname = "caburgesS"
-    server.vm.network "private_network", ip: "192.168.56.110"
+  config.vm.define VM['SERVER'][:name] do |server|
+    server.vm.hostname = VM['SERVER'][:name]
+    server.vm.network "private_network", ip: VM['SERVER'][:ip]
     server.vm.provider "virtualbox" do |v|
-      v.name = "caburgesS"
+      v.name = VM['SERVER'][:name]
       v.memory = 1024
       v.cpus = 2
     end
@@ -20,11 +32,11 @@ Vagrant.configure("2") do |config|
   end
 
   # SERVER WORKER
-  config.vm.define "caburgesSW" do |worker|
-    worker.vm.hostname = "caburgesSW"
-    worker.vm.network "private_network", ip: "192.168.56.111"
+  config.vm.define VM['WORKER'][:name] do |worker|
+    worker.vm.hostname = VM['WORKER'][:name]
+    worker.vm.network "private_network", ip: VM['WORKER'][:ip]
     worker.vm.provider "virtualbox" do |v|
-      v.name = "caburgesSW"
+      v.name = VM['WORKER'][:name]
       v.memory = 1024
       v.cpus = 2
     end
