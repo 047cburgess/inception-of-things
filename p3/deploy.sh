@@ -8,10 +8,11 @@ kubectl apply -n argocd --server-side --force-conflicts \
   -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 
 echo "Waiting for Argo CD server . . ."
-kubectl wait --for=condition=Ready pods --all -n argocd --timeout=10s
+kubectl wait --for=condition=Ready pods --all -n argocd --timeout=300s
 
-# Redirection that works only after argocd is up
-kubectl port-forward svc/argocd-server -n argocd 8080:443 &
+# Redirection that works only after argocd is up - in the background 
+# There must be a cleaner way to do this -> use k3d ingress or node port
+kubectl port-forward svc/argocd-server -n argocd 8080:443 --address 0.0.0.0 &
 
 echo "Ready! Available at https://localhost:8080"
 echo "Try curl https://localhost:8080 --insecure"
