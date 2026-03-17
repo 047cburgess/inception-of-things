@@ -4,6 +4,8 @@
 set -euo pipefail
 
 k3d cluster delete p3 2>/dev/null || true
+# TODO see if we can make scripts more robust
+# TODO add a clean/destroy/down script to all parts
 
 echo Creating p3 cluster . . .
 echo Setting up p8888 forwarding for wil app . . .
