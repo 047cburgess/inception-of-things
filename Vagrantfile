@@ -24,6 +24,7 @@ Vagrant.configure("2") do |config|
   config.vm.synced_folder "./p1", "/home/vagrant/p1"
   config.vm.synced_folder "./p2", "/home/vagrant/p2"
   config.vm.synced_folder "./p3", "/home/vagrant/p3"
+  config.vm.synced_folder "./bonus", "/home/vagrant/bonus"
 
   # Mount Vagrant cache folder so that vagrant does not re-download boxes every time
   config.vm.synced_folder ENV['VAGRANT_HOME'], "/home/vagrant/.vagrant.d", type: "rsync"
