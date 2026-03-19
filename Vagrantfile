@@ -8,6 +8,7 @@ Vagrant.configure("2") do |config|
   config.vm.hostname = "expozoo"
   config.vm.network :forwarded_port, guest: 8888, host: 8888
   config.vm.network :forwarded_port, guest: 8080, host: 8080
+  config.vm.network :forwarded_port, guest: 8081, host: 8081
 
   config.vm.provider "virtualbox" do |v|
     v.name = "expozoo"
