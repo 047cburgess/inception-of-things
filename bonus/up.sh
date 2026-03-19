@@ -8,5 +8,5 @@ helm repo update
 
 helm upgrade --install gitlab gitlab/gitlab \
   --timeout 600s \
-  -f test_traefik.yaml
+  -f values.yaml --namespace=gitlab
 

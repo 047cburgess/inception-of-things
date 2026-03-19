@@ -1,0 +1,27 @@
+certmanager:
+  enabled: false
+installCertmanager: false
+
+gitlab-runner:
+  install: false
+
+prometheus:
+  install: false
+
+nginx-ingress:
+  enabled: true
+  controller:
+    service:
+      type: NodePort
+      nodePorts:
+        http: 32080
+
+global:
+  hosts:
+    domain: localhost
+    https: false
+
+  ingress:
+    configureCertmanager: false
+    tls:
+      enabled: false
