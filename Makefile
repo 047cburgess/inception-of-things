@@ -7,7 +7,6 @@ VENV := \
 	VAGRANT_DISABLE_VBOXSYMLINKCREATE=1
 
 all up:
-	#TODO: add error handling in case machine exists
 	mkdir -p $(VAGRANT_HOME) $(VAGRANT_DOTFILE_PATH)
 	VBoxManage setproperty machinefolder $(HOME)/goinfre/vagrant/vms
 	$(VENV) vagrant up 

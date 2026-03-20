@@ -9,6 +9,7 @@ Vagrant.configure("2") do |config|
   config.vm.network :forwarded_port, guest: 8888, host: 8888
   config.vm.network :forwarded_port, guest: 8080, host: 8080
   config.vm.network :forwarded_port, guest: 8081, host: 8081
+  config.vm.network :forwarded_port, guest: 8443, host: 8443
 
   config.vm.provider "virtualbox" do |v|
     v.name = "expozoo"
@@ -35,7 +36,6 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", path: "scripts/install-k3d.sh"
 
   # Have an unique prompt when connected to this vm
-  config.vm.provision "shell", path: "scripts/emoji-prompt.sh"
-
+  config.vm.provision "shell", path: "scripts/quality-of-life.sh"
 
 end

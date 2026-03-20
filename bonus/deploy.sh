@@ -12,7 +12,8 @@ echo Setting up port forwarding . . .
 k3d cluster create p3 \
   -p "8888:30000@loadbalancer" \
   -p "8080:30001@loadbalancer" \
-  -p "8081:32080@loadbalancer"
+  -p "8081:32080@loadbalancer" \
+  -p "8443:32443@loadbalancer"
 
 echo Creating argocd and dev namespaces . . .
 kubectl create namespace argocd
