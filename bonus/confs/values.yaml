@@ -2,6 +2,9 @@ certmanager:
   enabled: false
 installCertmanager: false
 
+certmanager-issuer:
+  email: cat@cat.com
+
 gitlab-runner:
   install: false
 
@@ -15,6 +18,7 @@ nginx-ingress:
       type: NodePort
       nodePorts:
         http: 32080
+        https: 32443
 
 global:
   hosts:
