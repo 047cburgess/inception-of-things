@@ -2,6 +2,9 @@ certmanager:
   enabled: false
 installCertmanager: false
 
+certmanager-issuer:
+  email: cat@cat.com
+
 gitlab-runner:
   install: false
 

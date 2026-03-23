@@ -1,4 +1,4 @@
 #!/bin/bash
 
-helm uninstall gitlab
+helm uninstall gitlab --namespace=gitlab
 

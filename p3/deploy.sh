@@ -4,8 +4,6 @@
 set -euo pipefail
 
 k3d cluster delete p3 2>/dev/null || true
-# TODO see if we can make scripts more robust
-# TODO add a clean/destroy/down script to all parts
 
 echo Creating p3 cluster . . .
 echo Setting up p8888 forwarding for wil app . . .
@@ -41,6 +39,7 @@ ARGOCD_ADMIN_PASSWORD=$(kubectl -n argocd get secret argocd-initial-admin-secret
 
 echo
 echo "ARGOCD admin password: ${ARGOCD_ADMIN_PASSWORD}"
+echo $ARGOCD_ADMIN_PASSWORD > ~/p3/argocd_ad_pass.txt
 
 echo Logging in to argocd . . .
 
@@ -54,7 +53,7 @@ echo Deleting the argocd password file . . .
 kubectl -n argocd delete secret argocd-initial-admin-secret
 
 echo Applying the app.yaml config . . .
-kubectl apply -f confs/app.yaml
+kubectl apply -f ~/p3/confs/app.yaml
 
 
 # View the status of the application
