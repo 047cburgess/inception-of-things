@@ -9,7 +9,8 @@ echo Creating p3 cluster . . .
 echo Setting up p8888 forwarding for wil app . . .
 k3d cluster create p3 \
   -p "8888:30000@loadbalancer" \
-  -p "8080:30001@loadbalancer"
+  -p "8080:30001@loadbalancer" \
+  -p "8081:32080@loadbalancer"
 
 echo Creating argocd and dev namespaces . . .
 kubectl create namespace argocd
@@ -20,7 +21,6 @@ kubectl apply -n argocd --server-side --force-conflicts \
   -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 
 echo Waiting for Argo CD server to be ready. . .
-#kubectl wait --for=condition=Ready pods --all -n argocd --t
 kubectl rollout status deployment argocd-server -n argocd --timeout=300s
 
 echo Creating port forwarding for argocd-server 8080-443 . . .
@@ -36,28 +36,36 @@ done
 echo Extracting initial argocd password . . .
 ARGOCD_ADMIN_PASSWORD=$(kubectl -n argocd get secret argocd-initial-admin-secret \
   -o jsonpath="{.data.password}" | base64 -d)
+ARGOCD_ADMIN_USER=admin
 
 echo
 echo "ARGOCD admin password: ${ARGOCD_ADMIN_PASSWORD}"
+echo Available in ~/p3/argocd_ad_pass.txt
 echo $ARGOCD_ADMIN_PASSWORD > ~/p3/argocd_ad_pass.txt
 
 echo Logging in to argocd . . .
 
 argocd login localhost:8080 \
-  --username admin \
+  --username $ARGOCD_ADMIN_USER \
   --password "${ARGOCD_ADMIN_PASSWORD}" \
   --insecure \
   --grpc-web
 
-echo Deleting the argocd password file . . .
+echo Deleting the argocd password kubectl secret. . .
 kubectl -n argocd delete secret argocd-initial-admin-secret
 
 echo Applying the app.yaml config . . .
 kubectl apply -f ~/p3/confs/app.yaml
 
 
+argocd app wait will --health --sync --timeout 300
+
 # View the status of the application
-argocd app get will
+echo 
+echo "--------------------------------------------------------"
+echo "Argocd User: $ARGOCD_ADMIN_USER"
+echo "Argocd Pass: $ARGOCD_ADMIN_PASSWORD"
+echo "Access at: https://localhost:8080"
 
 # ARCHIVE COMMANDS
 #Change the password
