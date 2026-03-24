@@ -2,6 +2,10 @@
 set -eup
 export DEBIAN_FRONTEND=noninteractive
 
+if which vagrant ; then
+  exit
+fi
+
 # Virtualbox
 # source: https://wiki.debian.org/VirtualBox#Debian_10_.22Buster.22.2C_Debian_11_.22Bullseye.22.2C_and_Debian_12_.22Bookworm.22-1
 apt-get install -y lsb-release
@@ -22,7 +26,6 @@ apt-get install -y vagrant
 # set env var so box cache is stored in vagrant home
 echo 'VAGRANT_HOME=/home/vagrant/.vagrant.d' >> /etc/environment
 
+
 # make sure.vagrant files not created in current folder as we don't have permissions
 echo 'VAGRANT_DOTFILE_PATH=/home/vagrant/.vagrant' >> /etc/environment
-echo 'K3S_TOKEN=my-token' >> /etc/environment
-

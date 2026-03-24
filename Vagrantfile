@@ -6,6 +6,7 @@ ENV["VAGRANT_DISABLE_VBOXSYMLINKCREATE"] = "1"
 Vagrant.configure("2") do |config|
   config.vm.box = "generic/debian12"
   config.vm.hostname = "expozoo"
+  config.vm.network :forwarded_port, guest: 80, host: 8082
   config.vm.network :forwarded_port, guest: 8888, host: 8888
   config.vm.network :forwarded_port, guest: 8080, host: 8080
   config.vm.network :forwarded_port, guest: 8081, host: 8081
@@ -31,10 +32,9 @@ Vagrant.configure("2") do |config|
   # Mount Vagrant cache folder so that vagrant does not re-download boxes every time
   config.vm.synced_folder ENV['VAGRANT_HOME'], "/home/vagrant/.vagrant.d", type: "rsync"
 
-  # Install Docker and k3d
-  config.vm.provision "shell", path: "scripts/install-docker.sh"
-  config.vm.provision "shell", path: "scripts/install-k3d.sh"
-
+  # Colors
+  config.vm.provision "shell", path: "scripts/colors.sh"
+  
   # Have an unique prompt when connected to this vm
   config.vm.provision "shell", path: "scripts/quality-of-life.sh"
 

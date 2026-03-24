@@ -22,7 +22,7 @@ spec:
   selector:
     matchLabels:
       app: will
-  replicas: 1
+  replicas: 4
   template:
     metadata:
       labels:
@@ -30,6 +30,6 @@ spec:
     spec:
       containers:
       - name: will
-        image: wil42/playground:v1
+        image: wil42/playground:v2
         ports:
         - containerPort: 8888

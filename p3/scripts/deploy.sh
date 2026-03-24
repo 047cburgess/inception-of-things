@@ -3,6 +3,9 @@
 # Need to add proper error handling and condition checks
 set -euo pipefail
 
+sudo bash ~/p3/scripts/install-docker.sh
+sudo bash ~/p3/scripts/install-k3d.sh
+
 k3d cluster delete p3 2>/dev/null || true
 
 echo Creating p3 cluster . . .

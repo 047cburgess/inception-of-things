@@ -2,6 +2,8 @@
 set -eup
 export DEBIAN_FRONTEND=noninteractive
 
+echo 'Installing docker. . .'
+
 # Add Docker's official GPG key:
 apt-get update
 apt-get install -y ca-certificates curl
@@ -21,6 +23,3 @@ EOF
 apt-get update
 apt-get install -y docker-ce docker-ce-cli containerd.io
 
-systemctl status docker
-
-sudo adduser vagrant docker
