@@ -1,5 +1,7 @@
 #!/bin/bash 
 
+set -u
+
 echo 'Making sure the p3 cluster is already up'
 k3d cluster start p3 || (k3d cluster delete p3 && bash ~/p3/scripts/deploy.sh)
 
@@ -49,6 +51,6 @@ echo "Access at: https://localhost:8080"
 
 echo 
 echo "--------------------------------------------------------"
-echo "Gitlab User: $GLAB_USER"
-echo "Gitlab Pass: $GLAB_PASSWORD"
+echo "Gitlab User: $USER"
+echo "Gitlab Pass: $PASS"
 echo "Access at: http://gitlab-webservice-default.gitlab:8181"
