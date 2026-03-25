@@ -1,5 +1,5 @@
 #!/bin/bash
-set -eup
+set -eu
 export DEBIAN_FRONTEND=noninteractive
 
 echo 'Installing docker. . .'

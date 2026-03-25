@@ -32,7 +32,7 @@ kubectl patch svc argocd-server -n argocd \
 echo "Ready! Available at https://localhost:8080"
 
 echo Waiting for ArgoCD API . . .
-until curl -k https://localhost:8080 >/dev/null 2>&1; do
+until curl -k http://localhost:8080 >/dev/null 2>&1; do
   sleep 3
 done
 
@@ -44,7 +44,7 @@ ARGOCD_ADMIN_USER=admin
 echo
 echo "ARGOCD admin password: ${ARGOCD_ADMIN_PASSWORD}"
 echo Available in ~/p3/argocd_ad_pass.txt
-echo $ARGOCD_ADMIN_PASSWORD > ~/p3/argocd_ad_pass.txt
+echo "$ARGOCD_ADMIN_PASSWORD" > ~/p3/argocd_ad_pass.txt
 
 echo Logging in to argocd . . .
 

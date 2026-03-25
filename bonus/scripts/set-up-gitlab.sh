@@ -17,16 +17,15 @@ if ! kubectl get services -n gitlab | grep gitlab-web ; then
   
   helm repo update
   
+  TIMEOUT=600s
   helm upgrade --install gitlab gitlab/gitlab \
-    --timeout 600s \
-    -f ~/bonus/confs/values.yaml --namespace=gitlab
-  
-  kubectl rollout status deployment gitlab-webservice-default -n gitlab --timeout=300s
- 
+    --timeout $TIMEOUT \
+    -f ~/bonus/confs/values.yaml --namespace=gitlab 
+
   echo Waiting for Gitlab web service . . .
-  until curl -k http://gitlab.localhost:8081 >/dev/null 2>&1; do
-    sleep 1
-  done
+
+  kubectl rollout status deployment \
+    gitlab-webservice-default -n gitlab --timeout=$TIMEOUT
 fi
 
 # Extract the gitlab root password from kubernetes secret
