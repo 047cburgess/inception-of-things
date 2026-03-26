@@ -19,6 +19,13 @@ flowchart LR
     k3sS <===> k3sW
     token -.- k3sW
 ```
+### Useful Commands
+Launch the 2 VMs: vagrant up
+SSH into the Server machine: vagrant ssh caburgesS
+SSH into the Worker machine: vagrant ssh caburgesSW
+Detailed info on nodes: kubectl get nodes -o wide
+Check network configuration: ip a
+Check eth1 interface: ip a show eth1
 
 ## Part 2
 ```mermaid
@@ -49,6 +56,13 @@ flowchart LR
     ingress === app_two
     ingress === app_three
 ```
+### Useful Commands
+Show details of everything: kubectl get all
+Show details of nodes: kubectl get nodes -o wide
+Show the Ingress: kubectl describe ingress
+Curl with app one as Host: curl -H "Host: app1.com" 192.168.56.110 | grep 'app-one' 
+Curl with app two as Host: curl -H "Host: app2.com" 192.168.56.110 | grep 'app-two'
+Curl with no specified Host: curl 192.168.56.110 | grep 'app-three'
 
 ## Part 3
 ```mermaid
@@ -75,6 +89,13 @@ flowchart LR
     github ----- argocd
     argocd --> dev_ns
 ```
+### Useful Commands
+Show name spaces: kubectl get ns
+Show clusters: k3d cluster list
+Show pods in dev namespace: kubectl get pods -n dev
+Show pods in argocd namespace: kubectl get pods -n argocd
+Curl will app: curl http://localhost:8888
+Access argocd web UI: https://localhost:8080
 
 ## Bonus
 ```mermaid
@@ -105,3 +126,4 @@ flowchart LR
     argocd --> dev_ns
     gitlab --- argocd 
 ```
+
