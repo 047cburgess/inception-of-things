@@ -1,6 +1,31 @@
 # Inception Of Things
 
+## Usage
 
+
+```bash
+$ make
+$ make ssh
+    $ cd p1
+    $ vagrant up
+        ...
+    $ vagrant destroy
+    $ cd ../p2
+    $ vagrant up
+        ...
+    $ vagrant destroy
+    $ cd
+    $ bash p3/scripts/deploy.sh
+        ...
+    $ bash bonus/scripts/deploy.sh
+    $ cd repo
+        ...
+$ make fclean
+```
+
+- Launch P3: `bash ~/p3/scripts/deploy.sh`
+- Launch bonus: `bash ~/bonus/scripts/deploy.sh`
+  
 # Architecture
 
 ## Part 1
@@ -9,14 +34,12 @@ flowchart LR
     subgraph server["🖥️ caburgesS"]
         s_ip["192.168.56.110"]
         k3sS["☸️ k3s server"]
-        token["📄 token"]
     end
     subgraph worker["🖥️ caburgesW"]
         w_ip["192.168.56.111"]
         k3sW["☸️ k3s worker"]
     end
     k3sS <===> k3sW
-    token -.- k3sW
 ```
 ### Useful Commands
 - Launch the 2 VMs: `vagrant up`
@@ -64,6 +87,7 @@ flowchart LR
 - Curl with app one as Host: `curl -H "Host: app1.com" 192.168.56.110 | grep 'app-one' `
 - Curl with app two as Host: `curl -H "Host: app2.com" 192.168.56.110 | grep 'app-two'`
 - Curl with no specified Host: `curl 192.168.56.110 | grep 'app-three'`
+- View in browser: `http://localhost:8888`
 
 ## Part 3
 ```mermaid
@@ -106,10 +130,10 @@ flowchart LR
         h8080[":8080"]
         h8888[":8888"]
         h8081[":8081"]
-        subgraph k3d["☸️ k3d loadbalancer"]
+        subgraph k3d["☸️ k3d cluster"]
             lb30001[":30001"]
             lb30000[":30000"]
-            lb30080[":30080"]
+            lb30080[":32080"]
             subgraph argocd_ns["namespace: argocd"]
                 argocd["🐙 :8080"]
             end
@@ -117,7 +141,7 @@ flowchart LR
                 app["🫛 :8888"]
             end
             subgraph git_ns["namespace: gitlab"]
-                gitlab["🐙"]
+                gitlab["🦊 :8181"]
             end
         end
     end
@@ -128,10 +152,13 @@ flowchart LR
     gitlab --- argocd 
 ```
 ### Useful Commands
-- `Helm status gitlab`
-- `Helm show values`
-- `Helm get manifest`
-- `Helm get values`
+- `helm status gitlab`
+- `helm show values`
+- `helm get manifest`
+- `helm get values`
+- Access argocd web UI: `https://localhost:8080`
+- Access gitlab repo: `http://gitlab.localhost:8081`
+- View gitlab namespace: `k get all -n gitlab`
   
 # Resources
 - https://docs.k3s.io/installation/configuration

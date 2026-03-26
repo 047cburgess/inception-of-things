@@ -17,6 +17,9 @@ ssh:
 destroy:
 	$(VENV) vagrant destroy -f
 
+provision:
+	$(VENV) vagrant provision
+
 reload:
 	$(VENV) vagrant reload --provision
 
@@ -29,4 +32,4 @@ fclean clean: destroy
 
 re: destroy up
 
-.PHONY: all up ssh fclean clean stop provision halt
+.PHONY: all up ssh fclean clean stop provision destroy reload re
