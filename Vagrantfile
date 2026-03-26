@@ -13,8 +13,8 @@ Vagrant.configure("2") do |config|
 
   config.vm.provider "virtualbox" do |v|
     v.name = "expozoo"
-    v.memory = 1024 * 12
-    v.cpus = 8
+    v.memory = 1024 * 10
+    v.cpus = 4
     # Activate nested virtualization to run VMs inside the VM
     v.customize ["modifyvm", :id, "--nested-hw-virt", "on"]
   end

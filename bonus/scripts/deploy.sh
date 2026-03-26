@@ -1,8 +1,9 @@
 #!/bin/bash 
 
-set -u
+set -eu
 
 echo 'Making sure the p3 cluster is already up'
+which k3d > /dev/null 2>&1 || bash ~/p3/scripts/deploy.sh
 k3d cluster start p3 || (k3d cluster delete p3 && bash ~/p3/scripts/deploy.sh)
 
 
@@ -13,7 +14,7 @@ bash ~/bonus/scripts/set-up-gitlab.sh
 
 mkdir -p ~/repo
 cd ~/repo
-cp ~/bonus/conf/dev.yaml .
+cp ~/bonus/confs/dev.yaml .
 
 USER=root
 PASS=$(cat ~/bonus/gitlab_root_password.txt)
