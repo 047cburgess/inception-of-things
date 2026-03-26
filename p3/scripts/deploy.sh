@@ -69,29 +69,3 @@ echo "--------------------------------------------------------"
 echo "Argocd User: $ARGOCD_ADMIN_USER"
 echo "Argocd Pass: $ARGOCD_ADMIN_PASSWORD"
 echo "Access at: https://localhost:8080"
-
-# ARCHIVE COMMANDS
-#Change the password
-#argocd account update-password --current-password ${PASSWORD} --new-password <newpassword>
-#Get password: need to still adjust manually as other text in there
-#PASSWORD= $(argocd admin initial-password -n argocd)
-
-#
-# Log out
-# argocd logout localhost:8080
-#
-# Log back in
-# argocd login localhost:8080 --username admin --password <pass> --insecure
-#
-# Delete the initial passwd secret
-
-## Create the app via CLI
-#kubectl config set-context --current --namespace=argocd
-#argocd app create will \
-#	--repo https://github.com/047cburgess/iot-public.git \
-#	--path ./ \
-#	--dest-server https://kubernetes.default.svc \
-#	--dest-namespace dev \
-#	--sync-policy automated \
-#	--auto-prune \
-#	--self-heal

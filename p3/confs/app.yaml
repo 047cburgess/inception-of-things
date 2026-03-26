@@ -15,6 +15,3 @@ spec:
     automated:
       prune: true
       selfHeal: true
-
-#Adding Endpoints or EndpointSlices won't work, they are excluded:
-#kubectl get configmap argocd-cm -n argocd -o yaml
