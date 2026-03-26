@@ -1,6 +1,5 @@
 # Inception Of Things
 
-Blablah
 
 # Architecture
 
