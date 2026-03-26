@@ -93,7 +93,6 @@ flowchart LR
 ### Useful Commands
 - Show name spaces: `kubectl get ns`
 - Show clusters: `k3d cluster list`
-- Show kubeconfig: `k3d kubeconfig get dev`
 - Show pods in dev namespace: `kubectl get pods -n dev`
 - Show pods in argocd namespace: `kubectl get pods -n argocd`
 - Curl will app: `curl http://localhost:8888`
