@@ -30,6 +30,7 @@ flowchart LR
 ```mermaid
 flowchart LR
     client["👤 client"]
+    p8888[":8888\n(Browser Test)"]
     subgraph server["🖥️ caburgesS"]
         subgraph k3s["☸️ k3s server"]
             p80[":80"]
@@ -51,6 +52,7 @@ flowchart LR
     end
     p80 --- ingress
     client --- p80
+    p8888 --- p80
     ingress === app_one
     ingress === app_two
     ingress === app_three
