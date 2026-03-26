@@ -11,14 +11,16 @@ echo 'Running set-up-gitlab.sh'
 bash ~/bonus/scripts/set-up-gitlab.sh
 
 
-cd ~/bonus/confs
+mkdir -p ~/repo
+cd ~/repo
+cp ~/bonus/conf/dev.yaml .
 
 USER=root
-PASS=$(cat ../gitlab_root_password.txt)
+PASS=$(cat ~/bonus/gitlab_root_password.txt)
 REPO_NAME=bonus
 
 if [ ! -d .git ] ; then
-  echo 'Creating gitlab repository. . .'
+  echo 'Creating gitlab repository in ~/repo. . .'
   git init -b master
   git remote add origin "http://$USER:$PASS@gitlab.localhost:8081/$USER/$REPO_NAME"
   git add dev.yaml

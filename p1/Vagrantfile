@@ -2,6 +2,8 @@
 # vi: set ft=ruby :
 #
 
+require 'securerandom'
+
 VM = {
   'SERVER' => {
     name: 'caburgesS',
@@ -13,6 +15,7 @@ VM = {
   }
 }
 
+agent_token = SecureRandom.hex(32)
 
 Vagrant.configure("2") do |config|
 
@@ -21,14 +24,14 @@ Vagrant.configure("2") do |config|
   # SERVER
   config.vm.define VM['SERVER'][:name] do |server|
     server.vm.hostname = VM['SERVER'][:name]
+    server.vm.network :forwarded_port, guest: 80, host: 8888
     server.vm.network "private_network", ip: VM['SERVER'][:ip]
     server.vm.provider "virtualbox" do |v|
       v.name = VM['SERVER'][:name]
       v.memory = 1024
       v.cpus = 2
     end
-    server.vm.provision "shell", path: "scripts/install-k3s-server.sh"
-    server.vm.synced_folder "/home/vagrant/shared", "/token", create: true
+    server.vm.provision "shell", path: "scripts/install-k3s-server.sh", env: {"K3S_TOKEN" => agent_token}
   end
 
   # SERVER WORKER
@@ -40,8 +43,7 @@ Vagrant.configure("2") do |config|
       v.memory = 1024
       v.cpus = 2
     end
-    worker.vm.provision "shell", path: "scripts/install-k3s-worker.sh"
-    worker.vm.synced_folder "/home/vagrant/shared", "/token", create: true
+    worker.vm.provision "shell", path: "scripts/install-k3s-worker.sh", env: {"K3S_TOKEN" => agent_token}
   end
 
   config.trigger.after :up do |trigger|

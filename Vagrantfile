@@ -19,8 +19,6 @@ Vagrant.configure("2") do |config|
     v.customize ["modifyvm", :id, "--nested-hw-virt", "on"]
   end
 
-  # Install Vagrant and Virtualbox
-  config.vm.provision "shell", path: "scripts/install-vagrant.sh"
 
   # Mount project folders for live sync
   config.vm.synced_folder "./p1", "/home/vagrant/p1"
@@ -29,7 +27,10 @@ Vagrant.configure("2") do |config|
   config.vm.synced_folder "./bonus", "/home/vagrant/bonus"
 
   # Mount Vagrant cache folder so that vagrant does not re-download boxes every time
-  config.vm.synced_folder ENV['VAGRANT_HOME'], "/home/vagrant/.vagrant.d", type: "rsync"
+  config.vm.synced_folder ENV['VAGRANT_HOME'], "/home/vagrant/.vagrant.d"
+  #
+  # Install Vagrant and Virtualbox
+  config.vm.provision "shell", path: "scripts/install-vagrant.sh"
 
   # Colors
   config.vm.provision "shell", path: "scripts/colors.sh"

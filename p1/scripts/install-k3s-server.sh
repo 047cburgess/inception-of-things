@@ -18,6 +18,3 @@ sudo chown $(id -u):$(id -g) ~/.kube/config
 
 # Verify the configuration works
 kubectl get nodes
-
-# Copying the auto-generated token to the shared folder so the agent can access it
-cp /var/lib/rancher/k3s/server/token /token/agent-token
