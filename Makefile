@@ -18,7 +18,7 @@ destroy:
 	$(VENV) vagrant destroy -f
 
 reload:
-	$(VENV) vagrant reload
+	$(VENV) vagrant reload --provision
 
 stop halt:
 	$(VENV) vagrant halt

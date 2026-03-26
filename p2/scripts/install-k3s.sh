@@ -19,6 +19,3 @@ sudo chown $(id -u):$(id -g) ~/.kube/config
 
 # Verify the configuration works
 kubectl get nodes
-
-# TODO maybe put all scripts in the same place and inline this line in p1 server because the above is all the same
-# cp /var/lib/rancher/k3s/server/token /token/agent-token
