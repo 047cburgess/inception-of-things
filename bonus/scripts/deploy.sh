@@ -36,9 +36,6 @@ until argocd repo add http://gitlab-webservice-default.gitlab:8181/root/bonus.gi
 done
 echo 
 
-echo 'Not Sleeping 5'
-#sleep 5
-
 echo Updating will app config to use new gitlab repo instead of github  . . .
 kubectl apply -f ~/bonus/confs/app.yaml
 
