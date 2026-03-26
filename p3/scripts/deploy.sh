@@ -1,6 +1,5 @@
 #!/bin/bash 
 
-# Need to add proper error handling and condition checks
 set -euo pipefail
 
 sudo bash ~/p3/scripts/install-docker.sh
