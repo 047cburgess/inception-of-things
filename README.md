@@ -92,6 +92,7 @@ flowchart LR
 ### Useful Commands
 - Show name spaces: kubectl get ns
 - Show clusters: k3d cluster list
+- Show kubeconfig: k3d kubeconfig get dev
 - Show pods in dev namespace: kubectl get pods -n dev
 - Show pods in argocd namespace: kubectl get pods -n argocd
 - Curl will app: curl http://localhost:8888
@@ -126,4 +127,18 @@ flowchart LR
     argocd --> dev_ns
     gitlab --- argocd 
 ```
-
+### Useful Commands
+- Helm status gitlab
+- Helm show values
+- Helm get manifest
+- Helm get values
+  
+# Resources
+- https://docs.k3s.io/installation/configuration
+- https://oneuptime.com/blog/post/2026-02-02-k3s-networking-guide/view
+- https://k3d.io/stable/
+- https://argo-cd.readthedocs.io/en/stable/
+- https://argo-cd.readthedocs.io/en/stable/core_concepts/
+- https://argo-cd.readthedocs.io/en/stable/getting_started/
+- https://helm.sh/docs/intro/quickstart
+- https://docs.gitlab.com/charts/
