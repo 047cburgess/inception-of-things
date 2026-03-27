@@ -68,3 +68,5 @@ echo "--------------------------------------------------------"
 echo "Argocd User: $ARGOCD_ADMIN_USER"
 echo "Argocd Pass: $ARGOCD_ADMIN_PASSWORD"
 echo "Access at: https://localhost:8080"
+
+echo -e "$WELCOME_P3"

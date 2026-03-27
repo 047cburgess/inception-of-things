@@ -27,4 +27,8 @@ Vagrant.configure("2") do |config|
     trigger.run = { inline: "vagrant ssh caburgesS -c 'kubectl get all'"}
   end
 
+  config.trigger.after :up do |trigger|
+    trigger.run = { inline: "echo -e '#{ENV['WELCOME_P2']}'" }
+  end
+
 end

@@ -33,7 +33,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", path: "scripts/install-vagrant.sh"
 
   # Colors
-  config.vm.provision "shell", path: "scripts/colors.sh"
+  config.vm.provision "shell", path: "scripts/colors.sh", args: ["-export"]
   
   # Have an unique prompt when connected to this vm
   config.vm.provision "shell", path: "scripts/quality-of-life.sh"

@@ -58,3 +58,5 @@ echo "Gitlab User: $USER"
 echo "Gitlab Pass: $PASS"
 echo "Access at: http://gitlab-webservice-default.gitlab:8181"
 echo "--------------------------------------------------------"
+
+echo -e "$WELCOME_BONUS"

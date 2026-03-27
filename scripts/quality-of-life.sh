@@ -24,21 +24,7 @@ sudo adduser vagrant docker 2>&1 || true
 
 # Add MOTD to ssh connections
 source /etc/environment
-printf "${C_BOLD_BLACK}
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰${C_PINK}⣶⣤⠛⠉${C_BOLD_BLACK}
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣸⣇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣼⣿⣿⣧⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣴⣿⣿⣿⣿⣿⣿⣦⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⢀⣀⣠⣤⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣤⣄⣀⡀⠀⠀⠀⠀${C_HOT_PINK}
-⠀⠀⢸⣟⠛⠛⠛⢻⣿⡟⠛⠛⠛⢻⣿⣿⡟⠛⠛⠛⢻⣿⡟⠛⠛⠛⣻⡇⠀⠀
-⠀⠀⢸⡿⢦⣤⣴⠞⣿⠻⣦⣤⡴⠟⢸⡇⠻⢦⣤⣴⠟⣿⠷⣦⣤⡴⢿⡇⠀⠀${C_PINK}
-⠀⠀⢸⡇⠀⠀⠀⠀⣿⠀⠀⠀⠀⠀⢸⡇⠀⠀⠀⠀⠀⣿⠀⠀⠀⠀⢸⡇⠀⠀
-⠀⠀⢸⡇⠀⠀⠀⢀⡿⠀⠀⠀⠀⠀⢸⡇⠀⠀⠀⠀⠀⢿⡀⠀⠀⠀⢸⡇⠀⠀
-⠀⠀⣿⠀⠀⠀⠀⣸⠇⠀⠀⠀⠀⢠⡟⢻⡄⠀⠀⠀⠀⠸⣇⠀⠀⠀⠀⣿⠀⠀${C_LIGHT_PINK}
-⠀⢰⡏⠀⠀⠀⢀⡿⠀⠀⠀⠀⢀⡾⠁⠈⢷⡀⠀⠀⠀⠀⢿⡀⠀⠀⠀⢹⡆⠀
-⠀⣾⠃⠀⠀⠀⣼⠃⠀⠀⠀⢀⡾⠁⠀⠀⠈⢷⡀⠀⠀⠀⠘⣧⠀⠀⠀⠘⣷⠀${C_BLACK}
-⠰⠿⠶⠶⠶⠶⠿⠶⠶⠶⠶⠿⠷⠶⠶⠶⠶⠾⠿⠶⠶⠶⠶⠿⠶⠶⠶⠶⠿⠇${C_RESET}
-" > /etc/motd
+echo -e "$WELCOME_SSH" > /etc/motd
 sed -i '/pam_motd.so noupdate/s/^/#/' /etc/pam.d/sshd
 
 # Add prefix to prompt
