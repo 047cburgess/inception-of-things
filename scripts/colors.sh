@@ -8,6 +8,7 @@ C_PURPLE='\033[0;35m'
 C_CYAN='\033[0;36m'
 C_WHITE='\033[0;37m'
 C_BOLD_BLACK='\033[1;30m'
+C_BOLD_GREY='\033[1;38;5;239m'
 C_BOLD_RED='\033[1;31m'
 C_BOLD_GREEN='\033[1;32m'
 C_BOLD_YELLOW='\033[1;33m'
@@ -33,8 +34,8 @@ C_PLUM='\033[38;5;183m'
 #⣀⣁⣂⣃⣄⣅⣆⣇⣈⣉⣊⣋⣌⣍⣎⣏⣐⣑⣒⣓⣔⣕⣖⣗⣘⣙⣚⣛⣜⣝⣞⣟
 #⣠⣡⣢⣣⣤⣥⣦⣧⣨⣩⣪⣫⣬⣭⣮⣯⣰⣱⣲⣳⣴⣵⣶⣷⣸⣹⣺⣻⣼⣽⣾⣿
 
-WELCOME_SSH="${C_BOLD_BLACK}
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰${C_HOT_PINK}⣶⣶⣤⣴⠛⠉${C_BOLD_BLACK}
+WELCOME_SSH="${C_BOLD_GREY}
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰${C_HOT_PINK}⣶⣶⣤⣴⠛⠉${C_BOLD_GREY}
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣸⣇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣼⣿⣿⣧⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣴⣿⣿⣿⣿⣿⣿⣦⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -47,43 +48,46 @@ WELCOME_SSH="${C_BOLD_BLACK}
 ⠀⣾⠃⠂⠀⠔⣼⠃⠂⠀⢂⢀⡾⠁⠀⠀⠈⢷⡀⠔⠀⠂⠘⣧⠂⠀⢂⠘⣷⠀${C_WHITE}
 ⠰⠿⠶⠶⠶⠶⠿⠶⠶⠶⠶⠿⠷⠶⠶⠶⠶⠾⠿⠶⠶⠶⠶⠿⠶⠶⠶⠶⠿⠇${C_RESET}"
 
-WELCOME_P1="
-    ${C_BOLD_WHITE}Part 1 - Petting Lounge 🫳 
-
-${C_PINK}  There is a bossy 🐱 cat here,
-  and a 🐶 dog doing everything she wants.
+WELCOME_P1="${C_BOLD_WHITE}
+  Part 1 - Petting Lounge${C_PINK}
+                  🫳                  🫳
+  There is a bossy 🐱 cat here, and a 🐶 dog doing everything she wants.
 ${C_RESET}"
 
-WELCOME_P2="${C_YELLOW}     Part 2 - The Monkeys' Cage ${C_ORANGE}
-  ╔═══╦═══╦═══╗
-  ║   ║   ║   ║           🙈 🥜
-  ║   ║   ║   ║  🙉🥜
-  ║   ║   ║   ║  🥜🥜
-  ║   ║   ║   ║           🙊 🥜
-  ╚═══╩═══╩═══╝${C_RESET}"
-
-WELCOME_P3="${C_SKY_BLUE}  ˚ ° ˚ ∘ ˚  ${C_BOLD_WHITE}Part 3 - Aquarium${C_SKY_BLUE}  ˚ ∘ ˚ ° ˚
-
-  A whale 🐋 stands at the entrance.
-  Inside, an octopus 🐙 is teaching math
-  to a blue fish 🐟.
+WELCOME_P2="${C_BOLD_GREY}
+⢀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀     ${C_BOLD_WHITE} Part 2 - The Monkeys' Cage${C_BOLD_GREY}
+⢸⠀⡇⢸⠀⡇⢸⠀⡇⢸⠀⡇⢸
+⢸⠀⡇⢸⡸⠀⠀⢇⡇⢸⠀⡇⢸                   🙈 🥜
+⢸⠀⡇⢸⡇⠀⠀⢸⡇⢸⠀⡇⢸      🙉 🥜
+⢸⠀⡇⢸⢧⠀⠀⡇⡇⢸⠀⡇⢸     🥜 🥜
+⢸⣀⣇⣘⣀⣇⣘⣀⣇⣘⣀⣇⣘                🙊 🥜
 ${C_RESET}"
 
-WELCOME_BONUS="${C_SKY_BLUE}  ˚ ° ˚ ∘ ˚  ${C_BOLD_WHITE}Bonus - Feeding Session${C_SKY_BLUE}  ˚ ∘ ˚ ° ˚
+WELCOME_P3="${C_SKY_BLUE}
+  ˚ ° ˚ ∘ ˚  ${C_BOLD_WHITE}Part 3 - Aquarium${C_SKY_BLUE}  ˚ ∘ ˚ ° ˚
 
-${C_SKY_BLUE}  A fox 🦊 librarian replaces the 📚 books
-  for the octopus 🐙 teacher.
+  A whale 🐋 is guarding the surface.
+  Deeper down, an octopus 🐙 is teaching math
+  to a school of fish. 🐟  🐟
+                  🐟 🐟  🐟
+${C_RESET}"
+
+WELCOME_BONUS="${C_SKY_BLUE}
+  ˚ ° ˚ ∘ ˚  ${C_BOLD_WHITE}Bonus - Feeding Session${C_SKY_BLUE}  ˚ ∘ ˚ ° ˚
+
+  A fox 🦊 librarian replaces the 📚 books for the octopus 🐙 teacher.
+                                       📚   📚
 ${C_RESET}"
 
 # Persist to /etc/environment only when run as script
 # With -export: persist to /etc/environment (used by Vagrant provisioner)
 # Without: preview the art locally
 if [ "$1" = "-export" ]; then
-  echo "export WELCOME_SSH='${WELCOME_SSH}'" >> /etc/environment
-  echo "export WELCOME_P1='${WELCOME_P1}'" >> /etc/environment
-  echo "export WELCOME_P2='${WELCOME_P2}'" >> /etc/environment
-  echo "export WELCOME_P3='${WELCOME_P3}'" >> /etc/environment
-  echo "export WELCOME_BONUS='${WELCOME_BONUS}'" >> /etc/environment
+  printf 'export WELCOME_SSH=%q\n' "$WELCOME_SSH" >> /etc/environment
+  printf 'export WELCOME_P1=%q\n' "$WELCOME_P1" >> /etc/environment
+  printf 'export WELCOME_P2=%q\n' "$WELCOME_P2" >> /etc/environment
+  printf 'export WELCOME_P3=%q\n' "$WELCOME_P3" >> /etc/environment
+  printf 'export WELCOME_BONUS=%q\n' "$WELCOME_BONUS" >> /etc/environment
 else
   echo -e "$WELCOME_SSH"
   echo -e "$WELCOME_P1"

@@ -1,7 +1,7 @@
 #!/bin/bash 
 
 set -euo pipefail
-COLOR=$'🐋 \033[38;5;219;48;5;198m'
+COLOR=$'🐋 \033[1;38;5;205m'
 RESET=$' \033[0m'
 
 sudo bash ~/p3/scripts/install-docker.sh
@@ -10,11 +10,13 @@ sudo bash ~/p3/scripts/install-k3d.sh
 k3d cluster delete p3 2>/dev/null || true
 
 echo "$COLOR Creating p3 cluster . . .$RESET"
-echo "$COLOR Setting up p8888 forwarding for wil app . . .$RESET"
+echo "$COLOR Setting up p8888 forwarding for will app . . .$RESET"
 k3d cluster create p3 \
   -p "8888:30000@loadbalancer" \
   -p "8080:30001@loadbalancer" \
   -p "8081:32080@loadbalancer"
+
+COLOR=$'🐙 \033[1;38;5;205m'
 
 echo "$COLOR Creating argocd and dev namespaces . . .$RESET"
 kubectl create namespace argocd
@@ -71,4 +73,4 @@ echo "$COLOR Argocd User: $ARGOCD_ADMIN_USER$RESET"
 echo "$COLOR Argocd Pass: $ARGOCD_ADMIN_PASSWORD$RESET"
 echo "$COLOR Access at: https://localhost:8080$RESET"
 
-echo -e "$WELCOME_P3"
+eval echo -e "$WELCOME_P3"

@@ -14,7 +14,7 @@ all up:
 ssh:
 	$(VENV) vagrant ssh
 
-destroy:
+destroy clean:
 	$(VENV) vagrant destroy -f
 
 provision:
@@ -26,7 +26,7 @@ reload:
 stop halt:
 	$(VENV) vagrant halt
 
-fclean clean: destroy
+fclean: clean
 	rm -rf $(VAGRANT_HOME)
 	rm -rf $(VAGRANT_DOTFILE_PATH)
 

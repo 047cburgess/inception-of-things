@@ -11,6 +11,9 @@ echo "export TERM=xterm-256color" >> /etc/environment
 
 # Aliases
 echo "alias k=kubectl" >> /home/vagrant/.bashrc
+echo "alias up='vagrant up'" >> /home/vagrant/.bashrc
+echo "alias down='vagrant destroy -f'" >> /home/vagrant/.bashrc
+echo "alias deploy='bash ./scripts/deploy.sh'" >> /home/vagrant/.bashrc
 
 # Hosts for part 2
 echo '192.168.56.110   app1.com' >> /etc/hosts

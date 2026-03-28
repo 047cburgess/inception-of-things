@@ -1,6 +1,6 @@
 #!/bin/bash
 set -eup
-COLOR=$'🐱 \033[38;5;219;48;5;198m'
+COLOR=$'🐱 \033[1;38;5;205m'
 RESET=$' \033[0m'
 
 echo "$COLOR Installing k3s server. . .$RESET"
@@ -21,4 +21,8 @@ sudo cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
 sudo chown $(id -u):$(id -g) ~/.kube/config
 
 # Verify the configuration works
-kubectl get nodes
+kubectl get nodes 2>&1
+
+# Quality of life
+echo "export PS1='🐱 %> '" >> /home/vagrant/.bashrc
+echo "alias k=kubectl" >> /home/vagrant/.bashrc

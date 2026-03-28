@@ -1,7 +1,7 @@
 #!/bin/bash
 set -eup
 export DEBIAN_FRONTEND=noninteractive
-COLOR=$'🚧 \033[38;5;219;48;5;198m'
+COLOR=$'🚧 \033[1;38;5;205m'
 RESET=$' \033[0m'
 
 if which vagrant > /dev/null 2>&1; then
@@ -27,7 +27,7 @@ apt-get install -y -qq dkms linux-headers-$(uname -r) linux-headers-amd64
 apt-get install -y -qq virtualbox
 
 # Vagrant
-echo "$COLOR Installing Virtualbox...$RESET"
+echo "$COLOR Installing Vagrant...$RESET"
 wget -qO - https://apt.releases.hashicorp.com/gpg | gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(grep -oP '(?<=UBUNTU_CODENAME=).*' /etc/os-release || lsb_release -cs) main" \
   > /etc/apt/sources.list.d/hashicorp.list

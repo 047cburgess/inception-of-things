@@ -30,12 +30,12 @@ Vagrant.configure("2") do |config|
   config.vm.synced_folder ENV['VAGRANT_HOME'], "/home/vagrant/.vagrant.d"
   #
   # Install Vagrant and Virtualbox
-  config.vm.provision "shell", path: "scripts/install-vagrant.sh"
+  config.vm.provision "Install Vagrant", type: "shell", path: "scripts/install-vagrant.sh"
 
   # Colors
-  config.vm.provision "shell", path: "scripts/colors.sh", args: ["-export"]
+  config.vm.provision "ANSI colors", type: "shell", path: "scripts/colors.sh", args: ["-export"]
   
   # Have an unique prompt when connected to this vm
-  config.vm.provision "shell", path: "scripts/quality-of-life.sh"
+  config.vm.provision "Aliases and prompts", type: "shell", path: "scripts/quality-of-life.sh"
 
 end

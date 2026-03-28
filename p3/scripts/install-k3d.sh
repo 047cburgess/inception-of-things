@@ -1,6 +1,6 @@
 #!/bin/bash
 set -euo pipefail
-COLOR=$'🐋 \033[38;5;219;48;5;198m'
+COLOR=$'🐋 \033[1;38;5;205m'
 RESET=$' \033[0m'
 
 # Install kubectl
