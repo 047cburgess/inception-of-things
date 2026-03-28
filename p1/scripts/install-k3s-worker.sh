@@ -1,5 +1,9 @@
 #!/bin/bash
 set -eup
+COLOR=$'🐶 \033[38;5;219;48;5;198m'
+RESET=$' \033[0m'
+
+echo "$COLOR Installing k3s agent. . .$RESET"
 
 # Download and install K3S Agent
 K3S_URL=https://192.168.56.110:6443 

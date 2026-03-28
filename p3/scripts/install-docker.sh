@@ -1,8 +1,10 @@
 #!/bin/bash
 set -eu
 export DEBIAN_FRONTEND=noninteractive
+COLOR=$'🐋 \033[38;5;219;48;5;198m'
+RESET=$' \033[0m'
 
-echo 'Installing docker. . .'
+echo "$COLOR Installing docker. . .$RESET"
 
 # Add Docker's official GPG key:
 apt-get update

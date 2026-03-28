@@ -1,5 +1,9 @@
 #!/bin/bash
 set -eup
+COLOR=$'🙉 \033[38;5;219;48;5;198m'
+RESET=$' \033[0m'
+
+echo "$COLOR Installing k3s. . .$RESET"
 
 # Download and run the official K3s install script
 # This installs K3s as a systemd service and starts it automatically

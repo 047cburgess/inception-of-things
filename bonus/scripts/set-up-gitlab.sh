@@ -1,9 +1,11 @@
 #!/bin/bash
 
 set -eu
+COLOR=$'🦊 \033[38;5;219;48;5;198m'
+RESET=$' \033[0m'
 
 if ! which helm ; then
-	echo 'Installing helm. . .'
+	echo "$COLOR Installing helm. . .$RESET"
 	curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-4
 	chmod 700 get_helm.sh
 	./get_helm.sh
@@ -11,7 +13,7 @@ if ! which helm ; then
 fi
 
 if ! kubectl get services -n gitlab | grep gitlab-web ; then
-  echo 'Installing gitlab'
+  echo "$COLOR Installing gitlab$RESET"
   kubectl create namespace gitlab 2> /dev/null || true
   helm repo add gitlab https://charts.gitlab.io/
   
@@ -22,7 +24,7 @@ if ! kubectl get services -n gitlab | grep gitlab-web ; then
     --timeout $TIMEOUT \
     -f ~/bonus/confs/values.yaml --namespace=gitlab 
 
-  echo Waiting for Gitlab web service . . .
+  echo "$COLOR Waiting for Gitlab web service . . .$RESET"
 
   kubectl rollout status deployment \
     gitlab-webservice-default -n gitlab --timeout=$TIMEOUT
