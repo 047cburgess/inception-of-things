@@ -19,7 +19,10 @@ Vagrant.configure("2") do |config|
     server.vm.provision "Install k3s", type: "shell", path: "scripts/install-k3s.sh"
 
     server.vm.synced_folder "./confs", "/confs"
-    server.vm.provision "Apply k3s configuration", type: "shell", inline: "kubectl apply -f /confs/"
+    server.vm.provision "Apply k3s configuration", type: "shell", inline: "
+      kubectl apply -f /confs/
+      kubectl wait --for=condition=available deployment.apps/app-two
+    "
 
     # Show k3s nodes and welcome message
     server.trigger.after [:up] do |trigger|

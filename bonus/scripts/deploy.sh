@@ -60,7 +60,12 @@ echo
 echo "$FOX --------------------------------------------------------$RESET"
 echo "$FOX Gitlab User: $USER$RESET"
 echo "$FOX Gitlab Pass: $PASS$RESET"
-echo "$FOX Access at: http://gitlab-webservice-default.gitlab:8181$RESET"
+echo "$FOX Access at: http://gitlab.localhost:8181$RESET"
+echo "$FOX --------------------------------------------------------$RESET"
+
+echo
+echo "$FOX --------------------------------------------------------$RESET"
+echo "$FOX Access web app at: http://localhost:8888$RESET"
 echo "$FOX --------------------------------------------------------$RESET"
 
 eval echo -e "$WELCOME_BONUS"
