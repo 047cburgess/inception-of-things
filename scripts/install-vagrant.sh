@@ -37,3 +37,4 @@ apt-get install -y -qq vagrant
 
 echo 'VAGRANT_HOME=/home/vagrant/.vagrant.d' >> /etc/environment
 echo 'VAGRANT_DOTFILE_PATH=/home/vagrant/.vagrant' >> /etc/environment
+echo 'VAGRANT_DISABLE_VBOXSYMLINKCREATE=1' >> /etc/environment

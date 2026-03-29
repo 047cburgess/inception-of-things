@@ -48,6 +48,7 @@ kubectl apply -f ~/bonus/confs/app.yaml
 
 
 echo "$OCTO waiting until app is healthy and synced  . . .$RESET"
+argocd app sync will
 argocd app wait will --health --sync --timeout 300
 
 echo 
