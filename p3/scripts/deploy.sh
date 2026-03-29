@@ -62,6 +62,7 @@ kubectl -n argocd delete secret argocd-initial-admin-secret
 
 echo "$COLOR Applying the app.yaml config . . .$RESET"
 kubectl apply -f ~/p3/confs/app.yaml
+argocd app sync will
 
 
 argocd app wait will --health --sync --timeout 300
