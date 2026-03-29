@@ -83,11 +83,13 @@ flowchart LR
 ### Useful Commands
 - Show details of everything: `kubectl get all`
 - Show details of nodes: `kubectl get nodes -o wide`
-- Show the Ingress: kubectl `describe ingress`
+- Show the Ingress: `kubectl describe ingress`
 - Curl with app one as Host: `curl -H "Host: app1.com" 192.168.56.110 | grep 'app-one' `
 - Curl with app two as Host: `curl -H "Host: app2.com" 192.168.56.110 | grep 'app-two'`
 - Curl with no specified Host: `curl 192.168.56.110 | grep 'app-three'`
-- View in browser: `http://localhost:8888`
+- View in browser on host machine: `http://localhost:8888`
+- Curl in expozoo machine: `curl app1.com`
+- See DNS: `cat /etc/hosts`
 
 ## Part 3
 ```mermaid
