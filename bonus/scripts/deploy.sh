@@ -61,7 +61,7 @@ echo
 echo "$FOX --------------------------------------------------------$RESET"
 echo "$FOX Gitlab User: $USER$RESET"
 echo "$FOX Gitlab Pass: $PASS$RESET"
-echo "$FOX Access at: http://gitlab.localhost:8181$RESET"
+echo "$FOX Access at: http://gitlab.localhost:8081$RESET"
 echo "$FOX --------------------------------------------------------$RESET"
 
 echo
