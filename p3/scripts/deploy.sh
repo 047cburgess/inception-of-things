@@ -60,8 +60,6 @@ argocd login localhost:8080 \
 echo "$COLOR Deleting the argocd password kubectl secret. . .$RESET"
 kubectl -n argocd delete secret argocd-initial-admin-secret
 
-# TODO move this up all the way to the Makefile
-P3_REPO=${P3_REPO:-"https://github.com/047cburgess/iot-public-caburges.git"}
 
 echo "$COLOR Creating ArgoCD app from $P3_REPO . . .$RESET"
 argocd app create will \
@@ -83,7 +81,7 @@ argocd app wait will --health --sync --timeout 300
 
 # View the status of the application
 echo 
-echo "$COLOR --------------------------------------------------------$RESET"
+echo "$COLOR ⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⣀RESET"
 echo "$COLOR Argocd User: $ARGOCD_ADMIN_USER$RESET"
 echo "$COLOR Argocd Pass: $ARGOCD_ADMIN_PASSWORD$RESET"
 echo "$COLOR Access at: https://localhost:8080$RESET"

@@ -52,21 +52,20 @@ argocd app sync will
 argocd app wait will --health --sync --timeout 300
 
 echo 
-echo "$OCTO --------------------------------------------------------$RESET"
+echo "$OCTO ⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⣀RESET"
 echo "$OCTO Argocd User: admin$RESET"
 echo "$OCTO Argocd Pass: $(cat ~/p3/argocd_ad_pass.txt)$RESET"
 echo "$OCTO Access at: https://localhost:8080$RESET"
 
 echo
-echo "$FOX --------------------------------------------------------$RESET"
+echo "$FOX ⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⣀RESET"
 echo "$FOX Gitlab User: $USER$RESET"
 echo "$FOX Gitlab Pass: $PASS$RESET"
 echo "$FOX Access at: http://gitlab.localhost:8081$RESET"
-echo "$FOX --------------------------------------------------------$RESET"
 
 echo
-echo "$FOX --------------------------------------------------------$RESET"
+echo "$FOX ⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⣀RESET"
 echo "$FOX Access web app at: http://localhost:8888$RESET"
-echo "$FOX --------------------------------------------------------$RESET"
+echo "$FOX ⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⣀RESET"
 
 eval echo -e "$WELCOME_BONUS"

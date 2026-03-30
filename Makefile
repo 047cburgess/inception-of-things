@@ -6,6 +6,9 @@ VENV := \
 	VAGRANT_DOTFILE_PATH=$(VAGRANT_DOTFILE_PATH) \
 	VAGRANT_DISABLE_VBOXSYMLINKCREATE=1
 
+VENV += \
+	P3_REPO=https://github.com/047cburgess/iot-public-caburges.git
+
 all up:
 	mkdir -p $(VAGRANT_HOME) $(VAGRANT_DOTFILE_PATH)
 	VBoxManage setproperty machinefolder $(HOME)/goinfre/vagrant/vms

@@ -28,13 +28,19 @@ Vagrant.configure("2") do |config|
 
   # Mount Vagrant cache folder so that vagrant does not re-download boxes every time
   config.vm.synced_folder ENV['VAGRANT_HOME'], "/home/vagrant/.vagrant.d"
-  #
+
   # Install Vagrant and Virtualbox
   config.vm.provision "Install Vagrant", type: "shell", path: "scripts/install-vagrant.sh"
 
   # Colors
   config.vm.provision "ANSI colors", type: "shell", path: "scripts/colors.sh", args: ["-export"]
-  
+
+  # Save git url for part 3
+  # TODO get from .env or pass with Makefile, or both
+  config.vm.provision "Save URL for Part 3", type: "shell", inline: <<-SHELL
+    echo "export P3_REPO='https://github.com/047cburgess/iot-public-caburges.git'" >> /etc/environment
+  SHELL
+
   # Have an unique prompt when connected to this vm
   config.vm.provision "Aliases and prompts", type: "shell", path: "scripts/quality-of-life.sh"
 
