@@ -63,7 +63,7 @@ kubectl -n argocd delete secret argocd-initial-admin-secret
 
 echo "$COLOR Creating ArgoCD app from $P3_REPO . . .$RESET"
 argocd app create will \
-  --repo $P3_REPO \
+  --repo "$P3_REPO" \
   --path "./" \
   --dest-server https://kubernetes.default.svc \
   --dest-namespace "dev" \
@@ -81,7 +81,7 @@ argocd app wait will --health --sync --timeout 300
 
 # View the status of the application
 echo 
-echo "$COLOR ⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⣀RESET"
+echo "$COLOR ⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⠔⠉⢏⣀⣀$RESET"
 echo "$COLOR Argocd User: $ARGOCD_ADMIN_USER$RESET"
 echo "$COLOR Argocd Pass: $ARGOCD_ADMIN_PASSWORD$RESET"
 echo "$COLOR Access at: https://localhost:8080$RESET"

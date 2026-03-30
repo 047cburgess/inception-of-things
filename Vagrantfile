@@ -37,8 +37,9 @@ Vagrant.configure("2") do |config|
 
   # Save git url for part 3
   # TODO get from .env or pass with Makefile, or both
-  config.vm.provision "Save URL for Part 3", type: "shell", inline: <<-SHELL
-    echo "export P3_REPO='https://github.com/047cburgess/iot-public-caburges.git'" >> /etc/environment
+  config.vm.provision "Save URL for Part 3", type: "shell", 
+    env: {"P3_REPO" => ENV["P3_REPO"]}, inline: <<-SHELL
+    echo "export P3_REPO=$P3_REPO" >> /etc/environment
   SHELL
 
   # Have an unique prompt when connected to this vm

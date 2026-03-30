@@ -6,13 +6,16 @@ VENV := \
 	VAGRANT_DOTFILE_PATH=$(VAGRANT_DOTFILE_PATH) \
 	VAGRANT_DISABLE_VBOXSYMLINKCREATE=1
 
-VENV += \
-	P3_REPO=https://github.com/047cburgess/iot-public-caburges.git
+-include .env
 
 all up:
+	@if [ -z "$(P3_REPO)" ]; then \
+		echo "Error: P3_REPO is not set. Create a .env file with P3_REPO=<url>"; \
+		exit 1; \
+	fi
 	mkdir -p $(VAGRANT_HOME) $(VAGRANT_DOTFILE_PATH)
 	VBoxManage setproperty machinefolder $(HOME)/goinfre/vagrant/vms
-	$(VENV) vagrant up 
+	$(VENV) P3_REPO=$(P3_REPO) vagrant up 
 
 ssh:
 	$(VENV) vagrant ssh
