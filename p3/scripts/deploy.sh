@@ -60,11 +60,25 @@ argocd login localhost:8080 \
 echo "$COLOR Deleting the argocd password kubectl secret. . .$RESET"
 kubectl -n argocd delete secret argocd-initial-admin-secret
 
-echo "$COLOR Applying the app.yaml config . . .$RESET"
-kubectl apply -f ~/p3/confs/app.yaml
-argocd app sync will
+# TODO move this up all the way to the Makefile
+P3_REPO=${P3_REPO:-"https://github.com/047cburgess/iot-public-caburges.git"}
 
+echo "$COLOR Creating ArgoCD app from $P3_REPO . . .$RESET"
+argocd app create will \
+  --repo $P3_REPO \
+  --path "./" \
+  --dest-server https://kubernetes.default.svc \
+  --dest-namespace "dev" \
+  --sync-policy automated \
+  --auto-prune \
+  --self-heal \
+  --upsert \
+  --grpc-web
 
+echo "$COLOR Syncing ArgoCD app . . .$RESET"
+argocd app sync will --grpc-web
+
+# Wait
 argocd app wait will --health --sync --timeout 300
 
 # View the status of the application
