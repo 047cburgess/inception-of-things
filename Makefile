@@ -11,6 +11,8 @@ VENV := \
 all up:
 	@if [ -z "$(P3_REPO)" ]; then \
 		echo "Error: P3_REPO is not set. Create a .env file with P3_REPO=<url>"; \
+		echo "Example:"; \
+		echo "P3_REPO=https://github.com/047cburgess/iot-public-caburges.git"; \
 		exit 1; \
 	fi
 	mkdir -p $(VAGRANT_HOME) $(VAGRANT_DOTFILE_PATH)
