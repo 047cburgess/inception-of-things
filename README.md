@@ -2,7 +2,7 @@
 
 ## Usage
 
-
+g
 ```bash
 $ make
 $ make ssh
